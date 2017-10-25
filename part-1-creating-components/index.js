@@ -12,6 +12,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const authRoutes = require('./server/routes/auth');
 app.use('/auth', authRoutes);
 
+
+//when serving a react application using express use the below code
+app.get('*', function(req, res, next){
+  res.sendfile(__dirname + '/server/static/index.html')
+})
+
+
 // start the server
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
